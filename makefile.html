@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Makefile
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Var assignment</h3>
+
+<pre><code>JS_COMPRESSOR := $(uglify)
+
+# Safe assignment
+prefix ?= /usr/local
+</code></pre>
+
+<h3>Magic variables</h3>
+
+<pre><code>$^   -- dependencies
+$@   -- the thing to be built
+
+$@   -- Rule target
+$%   -- Target member name ('foo' in 'foo.c' for '%.c')
+$^   -- Prerequisites (all, without duplication)
+$+   -- Prerequisites (all, with duplication)
+$?   -- Prerequisites (new ones)
+$|   -- Prerequisites (order-only?)
+$&lt;   -- Prerequisite (first)
+$*   -- Basename without extension of the target (?)
+</code></pre>
+
+<h3>Cool stuff</h3>
+
+<pre><code>    gitdir ?= $(shell git --exec-path)
+    gitver ?= $(word 3,$(shell git --version))
+</code></pre>
+
+<h3>Find files</h3>
+
+<pre><code>FILES = $(shell find images -name "*")
+
+$(patsubst images/%, assets/%, $(shell find images -name "*"))
+</code></pre>
+
+<h3>Substitutions</h3>
+
+<pre><code># Same
+    $(SOURCE:.cpp=.o)
+    $(patsubst %.cpp, %.c, $(SOURCES))
+
+$(strip $(string_var))
+
+$(filter %.less, $(files))
+$(filter-out %.less, $(files))
+</code></pre>
+
+<h3>Executing</h3>
+
+<pre><code>JS_COMPRESSOR := $(uglify)
+
+docs:
+  $(JS_COMPRESSOR) file.js
+</code></pre>
+
+<h3>Building files</h3>
+
+<pre><code>    %.o: %.c
+        ffmpeg -i $&lt; &gt; $@   # Input and output
+        foo $^
+</code></pre>
+
+<h3>Default task</h3>
+
+<pre><code>    default:
+        @echo "hello."
+  @false
+</code></pre>
+
+<h3>Inclusion</h3>
+
+<pre><code>include assets.make
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

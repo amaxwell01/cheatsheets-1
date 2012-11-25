@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      jQuery
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Extending selectors</h3>
+
+<pre><code>// $(":inline")
+$.expr[':'].inline = function(a) {
+  return $(a).css('display') === 'inline';
+};
+</code></pre>
+
+<h3>Extend CSS properties</h3>
+
+<pre><code>$.cssHooks.someCSSProp = {
+  get: function(elem, computed, extra) {
+  },
+  set: function(elem, value) {
+  }
+};
+
+// Disable "px"
+$.cssNumber["someCSSProp"] = true;
+</code></pre>
+
+<h3>fn.animate() hooks</h3>
+
+<pre><code>$.fn.step.someWhatever = function(fx) {
+  // ...
+}
+</code></pre>
+
+<h3>Mobile events</h3>
+
+<p>For support for <code>tap</code>, <code>swipe</code>, <code>swipeLeft</code>, et al, use
+<a href="https://github.com/jquery/jquery-mobile/blob/master/js/jquery.mobile.event.js">jquery.mobile.event.js</a>. Be sure to set <code>$.support.touch</code> first.</p>
+
+<p>To get <code>$.support.touch</code> (and family), use this from
+<a href="https://github.com/jquery/jquery-mobile/blob/master/js/jquery.mobile.support.js">jquery.mobile.support.js</a>:</p>
+
+<pre><code>$.extend($.support, {
+  orientation: "orientation" in window &amp;&amp; "onorientationchange" in window,
+  touch: "ontouchend" in document,
+  cssTransitions: "WebKitTransitionEvent" in window,
+  pushState: "pushState" in history &amp;&amp; "replaceState" in history,
+  mediaquery: $.mobile.media( "only all" ),
+  cssPseudoElement: !!propExists( "content" ),
+  touchOverflow: !!propExists( "overflowScrolling" ),
+  boxShadow: !!propExists( "boxShadow" ) &amp;&amp; !bb,
+  scrollTop: ( "pageXOffset" in window || "scrollTop" in document.documentElement || "scrollTop" in fakeBody[ 0 ] ) &amp;&amp; !webos &amp;&amp; !operamini,
+  dynamicBaseTag: baseTagTest()
+});
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Rubygems
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <pre><code>gem build *.gemspec         # Build a gem
+gem install *.gem           # Install locally
+gem push *.gem              # Upload to rubygems.org
+gem yank foogem -v 0.0.1    # Take it back
+gem owner -a rico@ricostacruz.com
+
+gem list                    # List local gems
+gem which rake              # Point to where lib/rake.rb is
+gem search -r rails         # [remote] Search for gems
+
+# https://github.com/fnando/gem-open
+gem open foogem
+GEM_EDITOR="vim" gem open foogem
+
+cd $(basename `gem which rake`)  # Go to a gem's path
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

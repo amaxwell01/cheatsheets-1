@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Phusion Passenger
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <pre><code>server {
+   listen 80;
+   server_name www.yourhost.com;
+   root /somewhere/public;   # &lt;--- be sure to point to 'public'!
+   passenger_enabled on;
+   autoindex on; # Show directory listings
+}
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      CSS
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h2>Animations</h2>
+
+<h3>Animtaion</h3>
+
+<pre><code>animation-direction: normal | reverse | alternate | alternate-reverse
+animation-iteration-count: infinite | &lt;number&gt;
+
+animation: &lt;name&gt; &lt;duration&gt; &lt;timing-function&gt; &lt;delay&gt; &lt;count&gt; &lt;direction&gt; &lt;fill-mode&gt;
+
+animation: bounce 300ms linear infinite
+</code></pre>
+
+<h2>Webkit extensions</h2>
+
+<h3>Font smoothing</h3>
+
+<pre><code>/* maxvoltar.com/archive/-webkit-font-smoothing */
+* {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+</code></pre>
+
+<h3>Heading kerning pairs and ligature</h3>
+
+<pre><code>h1, h2, h3 { text-rendering: optimizeLegibility; }
+</code></pre>
+
+<h3>Native-like iOS scrolling</h3>
+
+<pre><code>-webkit-overflow-scrolling: touch;
+overflow-y: auto;
+</code></pre>
+
+<h3>Gradient text</h3>
+
+<pre><code>background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#333));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+</code></pre>
+
+<h3>Text stroke</h3>
+
+<pre><code>/* http://www.webkit.org/blog/85/introducing-text-stroke/ */
+-webkit-text-stroke: 3px black;
+</code></pre>
+
+<h3>iOS Scrolling prevention</h3>
+
+<pre><code>document.ontouchstart = (e) -&gt;
+  $pane = $(e.target).closest('.scrollable&gt;div')
+  if $pane.length is 0 or $pane[0].scrollHeight &lt;= $pane.innerHeight()
+    e.preventDefault()
+
+%ios-scrollable
+  &amp;, &gt;div
+    -webkit-overflow-scrolling: touch
+    overflow: auto
+
+  &gt;div
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+</code></pre>
+
+<h3>UIWebView optimizations</h3>
+
+<pre><code>/* http://www.bitsandpix.com/entry/ios-webkit-uiwebview-remove-tapclick-highlightborder-with-css/ */
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-user-select: none;                /* disable text select */
+  -webkit-touch-callout: none;              /* disable callout, image save panel (popup) */
+  -webkit-tap-highlight-color: transparent; /* "turn off" link highlight */
+}
+
+a:focus {
+  outline:0; // Firefox (remove border on link click)
+}
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

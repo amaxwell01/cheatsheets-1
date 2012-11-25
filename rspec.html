@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      RSpec
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Invoking tests</h3>
+
+<pre><code>rake -T spec      # List spec tasks
+
+rake spec         # Run all
+
+rake spec/models/mymodel_spec.rb
+rake spec/models/mymodel_spec.rb:27
+</code></pre>
+
+<h3>Other spec tasks</h3>
+
+<pre><code>rake spec:controllers
+rake spec:helpers
+rake spec:lib
+rake spec:mailers
+rake spec:models
+rake spec:requests
+rake spec:routing
+rake spec:views
+</code></pre>
+
+<h3>Spec helpers</h3>
+
+<pre><code>module UserSpecHelper
+  def valid_user_attributes
+    { :email =&gt; "joe@bloggs.com",
+      :username =&gt; "joebloggs",
+      :password =&gt; "abcdefg"}
+  end
+end
+</code></pre>
+
+<h3>A test</h3>
+
+<pre><code>describe "A User (in general)" do
+  include UserSpecHelper
+
+  before(:each) do
+    @user = User.new
+  end
+
+  subject {
+    Person.new
+  }
+
+  context "setter methods" do
+    it "should do this" do
+      pending "some other thing"
+
+      subject.name = 'x'
+      subject.name.should == 'x'
+    end
+  end
+end
+</code></pre>
+
+<h3>Expectations</h3>
+
+<pre><code># Can be .should or .should_not
+
+# Numeric
+target.should be &lt; 6
+target.should == 5
+target.should equal value
+target.should be_between(1, 10)
+target.should be_close value, tolerance
+
+target.should be value
+target.should satisfy {|arg| ...}
+target.should predicate [optional args]
+target.should match regexp
+
+target.should be_an_instance_of &lt;class&gt;
+target.should be_a_kind_of &lt;class&gt;
+
+target.should respond_to &lt;symbol&gt;
+
+# Control flow
+proc.should raise_error
+proc.should raise_error(&lt;exception&gt; [, message])
+
+proc.should throw &lt;symbol&gt;
+
+# Enumerables/arrays
+target.should include &lt;object&gt;
+
+target.should have(&lt;number&gt;).things
+target.should have_at_least(&lt;number&gt;).things
+target.should have_at_most(&lt;number&gt;).things
+
+target.should have(&lt;number&gt;).errors_on(:field)
+
+# Change
+proc.should change(instance, method).from(number).to(number)
+
+# proc.should &lt;=&gt; expect(&amp;proc).to
+expect { thing.approve! }.to change(thing, :status).
+    from(Status::AWAITING_APPROVAL).
+    to(Status::APPROVED)
+
+expect { thing.destroy }.to change(Thing, :count).by(-1)
+</code></pre>
+
+<h3>Mocking - basic</h3>
+
+<pre><code>book.stub(:title) { "The RSpec Book" }
+book.stub(:title =&gt; "The RSpec Book")
+book.stub(:title).and_return("The RSpec Book")
+
+# First arg is a name, it's optional
+book = double("book", :title =&gt; "The RSpec Book")
+</code></pre>
+
+<h3>Mocking - consecutive return values</h3>
+
+<pre><code>die.stub(:roll).and_return(1,2,3)
+die.roll # =&gt; 1
+die.roll # =&gt; 2
+die.roll # =&gt; 3
+die.roll # =&gt; 3
+die.roll # =&gt; 3
+</code></pre>
+
+<h3>Expectations</h3>
+
+<pre><code>double.should_receive(:msg).with(no_args())
+double.should_receive(:msg).with(any_args())
+double.should_receive(:msg).with(1, kind_of(Numeric), "b") #2nd argument can any kind of Numeric
+double.should_receive(:msg).with(1, boolean(), "b") #2nd argument can true or false
+double.should_receive(:msg).with(1, /abc/, "b") #2nd argument can be any String matching the submitted Regexp
+double.should_receive(:msg).with(1, anything(), "b") #2nd argument can be anything at all
+double.should_receive(:msg).with(1, ducktype(:abs, :div), "b") #2nd argument can be object that responds to #abs and #div
+
+double.should_receive(:msg).once
+double.should_receive(:msg).twice
+double.should_receive(:msg).exactly(n).times
+double.should_receive(:msg).at_least(:once)
+double.should_receive(:msg).at_least(:twice)
+double.should_receive(:msg).at_least(n).times
+double.should_receive(:msg).at_most(:once)
+double.should_receive(:msg).at_most(:twice)
+double.should_receive(:msg).at_most(n).times
+double.should_receive(:msg).any_number_of_times
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

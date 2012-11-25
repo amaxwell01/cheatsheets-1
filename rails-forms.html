@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Rails form helpers
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Forms</h3>
+
+<pre><code># Model:
+= form_for @post do |f|
+
+= form_for @post, url: { method: 'put', action: 'create' }, html: { class: 'nifty_form'} do |f|
+</code></pre>
+
+<h3>Fields</h3>
+
+<pre><code>f.check_box :enabled
+f.text_field :title
+f.text_area :body, \
+  :size =&gt; '60x12'
+</code></pre>
+
+<h3>Select dropdowns</h3>
+
+<pre><code>f.time_zone_select :time_zone
+f.date_select :birthday
+
+f.select :city_id, [['Lisbon',1], ['Madrid',2], ...], 4   # (4 = selected)
+
+f.collection_select :city_id, City.all, :id, :name
+
+options_for_select [['Lisbon',1], ['Madrid', 2], ...], 4  # Just makes &lt;option&gt; tags
+</code></pre>
+
+<h3>The rest</h3>
+
+<pre><code>f.submit "Create"
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

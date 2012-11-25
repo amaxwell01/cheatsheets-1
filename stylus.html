@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Stylus
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Variables</h3>
+
+<pre><code>royal-blue = #36a
+support-for-ie ?= true
+
+div
+  color: royal-blue
+</code></pre>
+
+<h3>Mixin without args</h3>
+
+<pre><code>red-border()
+  border: solid 2px red
+
+div
+  red-border()
+</code></pre>
+
+<h3>Mixin with arguments</h3>
+
+<pre><code>border-radius(n)
+  -webkit-border-radius: n
+  border-radius: n
+
+div
+  border-radius: 2px
+</code></pre>
+
+<p>Or with defaults:</p>
+
+<pre><code>border-radius(n=2px)
+  -webkit-border-radius: n
+</code></pre>
+
+<p>Multiple args:</p>
+
+<pre><code>xy(left, top)
+  left: left
+  top: top
+
+div
+  xy: 2px 2px
+</code></pre>
+
+<h3>Functions</h3>
+
+<pre><code>add(a, b)
+  a + b
+
+body
+  padding: add(10px, 5)
+</code></pre>
+
+<h3>Interpolation</h3>
+
+<pre><code>-{prefix}-border-radius: 2px
+</code></pre>
+
+<h3>Built-in functions</h3>
+
+<pre><code>alpha(#fff)   //=&gt; 1
+alpha(rgba(0, 0, 0, 0.2))   //=&gt; 0.2
+
+dark(black)  //=&gt; true
+light(black) //=&gt; false
+
+lighten(color, 10%)
+darken(color, 10%)
+saturate(color, 10%)
+invert(color)
+
+width:  image-size(img)[0]
+height: image-size(img)[1]
+
+unquote(string)
+
+s("rgba(0, 0, 0, %s)", 0.3)   // Works like eval?
+</code></pre>
+
+<p>Add Property:</p>
+
+<pre><code>gradient(color)
+  add-property('background-image', linear-gradient(top, color, darken(color, 20%)))
+  color
+
+body
+  background: gradient(red)
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

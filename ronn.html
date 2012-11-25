@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Ronn
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Generating</h3>
+
+<pre><code>$ ronn foo.ronn
+
+$ ronn -r foo.ronn        # Creates foo.7
+
+$ ronn --html --style toc,80c foo.ronn
+
+# manual - top center
+# org    - bottom left
+$ ronn --manual="MY MANUAL" --organization="RONN 0.7.0"
+</code></pre>
+
+<p>See <a href="http://rtomayko.github.com/ronn/ronn.1.html">ronn.1</a>.</p>
+
+<h3>Format</h3>
+
+<pre><code>name(1) -- short, single-sentence description
+=============================================
+
+## SYNOPSIS
+
+`name` [&lt;optional&gt;...] &lt;flags&gt;
+
+## DESCRIPTION
+
+A normal paragraph. This can span multiple lines and is terminated with two
+or more line endings -- just like Markdown.
+
+Inline markup for `code`, `user input`, and **strong** are displayed
+boldface; &lt;variable&gt;, _emphasis_, *emphasis*, are displayed in italics
+(HTML) or underline (roff).
+</code></pre>
+
+<h3>Linking</h3>
+
+<pre><code>Manual references like sh(1), markdown(7), roff(7), etc. are hyperlinked in
+HTML output.
+
+Link to sections like [STANDARDS][], [SEE ALSO][], or [WITH A DIFFERENT LINK
+TEXT][#SEE-ALSO].
+</code></pre>
+
+<h3>Definition lists</h3>
+
+<pre><code>  * `-a`, `--argument`=[&lt;value&gt;]:
+    One or more paragraphs describing the argument.
+
+  * You can put whatever you *want* here, really:
+    Nesting and paragraph spacing are respected.
+</code></pre>
+
+<h3>Frequently used sections</h3>
+
+<pre><code>## OPTIONS
+## SYNTAX
+## ENVIRONMENT
+## RETURN VALUES
+## STANDARDS
+## SECURITY CONSIDERATIONS
+## BUGS
+## HISTORY
+## AUTHOR
+## COPYRIGHT
+## SEE ALSO
+</code></pre>
+
+<p>See <a href="http://rtomayko.github.com/ronn/ronn-format.7.html">ronn-format.7</a>.</p>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

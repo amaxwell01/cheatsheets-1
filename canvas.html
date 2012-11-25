@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Canvas
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Getting the context</h3>
+
+<pre><code>var canvas = document.getElementById('c');
+var c = canvas.getContext("2d");
+</code></pre>
+
+<h3>Basic drawing</h3>
+
+<pre><code>// x = 10, y = 20, width = 200, height = 100
+c.fillStyle = '#ff0000';
+c.strokeStyle = '#ff00ff';
+
+c.lineWidth = 5;
+c.lineCap = 'round';
+
+c.fillRect(10, 20, 200, 100);
+
+c.stroke();
+c.fill();
+</code></pre>
+
+<h3>Saving and restoring</h3>
+
+<pre><code>c.save();
+
+// Saves:
+// strokeStyle fillStyle globalAlpha lineWidth lineCap lineJoin miterLimit 
+// shadowOffsetX shadowOffsetY shadowBlur shadowColor
+// globalCompositeOperation
+// Transformations: translate rotate scale transform setTransform
+// Clipping path
+
+c.restore();
+</code></pre>
+
+<h3>Transformations</h3>
+
+<pre><code>c.translate(0, 0)
+c.rotate(Math.PI*2/5)
+c.scale(1.0, 1.0)
+</code></pre>
+
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Canvas_tutorial/Transformations">MDN: Transformations</a>.</p>
+
+<h3>Image drawing</h3>
+
+<pre><code>c.drawImage(image, dx, dy, [dw, dh]);
+/* `image` can be HTML Image/Canvas/Video */
+</code></pre>
+
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Canvas_tutorial/Using_images">MDN: Images</a>.</p>
+
+<h3>Colors, styles shadows</h3>
+
+<pre><code>c.strokeStyle = '#ff00ff';
+c.fillStyle = '#ff00ff';
+
+c.shadowOffsetX = 0;
+c.shadowOffsetY = 0;
+c.shadowOffsetBlur = 3.0;
+c.shadowColor = 'rgba(0,0,0,0.2)';
+</code></pre>
+
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Canvas_tutorial/Applying_styles_and_colors">MDN: Styles</a>.</p>
+
+<h3>Gradients</h3>
+
+<pre><code>gr = c.createLinearGgadient(x0,y0,x1,y1)
+gr = c.createRadialGradient(x0,y0,r0,x1,y1,r1)
+pat = c.createPattern(image, 'repeat-x')
+
+c.fillStyle = gr
+</code></pre>
+
+<h3>Drawing</h3>
+
+<pre><code>c.beginPath()
+c.moveTo(x,y)
+c.lineTo(x,y)
+c.quadraticCurveTo(cpx,cpy,x,y)
+c.bezierCurveTo(cp1x,cp1y,cp2x,cp2y)
+c.arcTo(...)
+c.arc(...)
+c.closePath()
+</code></pre>
+
+<h3>More resources</h3>
+
+<ul>
+<li><a href="http://www.nihilogic.dk/labs/canvas_sheet/HTML5_Canvas_Cheat_Sheet.pdf">Canvas Cheatsheet PDF</a></li>
+</ul>
+
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

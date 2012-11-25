@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      vim
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h2>Command line</h2>
+
+<pre><code>&lt;C-r&gt;&lt;C-w&gt;         # insert current word into the command line
+&lt;C-r&gt;"             # paste from " register
+</code></pre>
+
+<h2>Motions</h2>
+
+<pre><code>vip           # Select paragraph
+vipipipip     # Select more
+
+ap            # a paragraph
+ip            # inner paragraph
+
+ap, ip        # Paragraph
+aw, iw        # Word
+as, is        # Sentence
+
+ab            # A block [(
+aB            # A block in [{
+at            # A XML tag block
+a[ ( { &lt;      # A [], (), or {} block
+a' " `        # A quoted string
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>yip           # Yank inner paragraph
+yap           # Yank paragraph (including newline)
+</code></pre>
+
+<h2>Folds</h2>
+
+<pre><code>zo      # Open
+zO      # Open, recursive
+zc      # Close
+zC      # Close, recursive
+za      # Toggle
+zA      # Toggle, recursive
+
+zv      # Open folds for this line
+
+zM      # Close all
+zR      # Open all
+
+zm      # Fold more (foldlevel += 1)
+zr      # Fold less (foldlevel -= 1)
+
+zx      # Update
+</code></pre>
+
+<h2>Misc</h2>
+
+<pre><code>.       # repeat last command
+]p      # paste under the current indentation level
+
+C-o     # Go back to previous location (C-i forward)
+C-t     # Go back to last tag
+
+zz      # Center this line
+
+`.      # Go to last edit
+``      # Go to last jump
+</code></pre>
+
+<h2>Windows</h2>
+
+<pre><code>z{height}&lt;Cr&gt;       # Resize pane to {height} lines tall
+</code></pre>
+
+<h2>Tags</h2>
+
+<pre><code>  ^]      # Jump to definition
+  g]      # See all definitions
+  ^O ^I   # Back/forward
+
+  :tselect Classname  # Find definitions of Classname
+  :tjump Classname    # Find definitions of Classname (auto-select 1st)
+  :tag Classname      # Jump to first definition of Classname
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

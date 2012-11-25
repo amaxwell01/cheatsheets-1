@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Tig
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h2>Tig shortcuts</h2>
+
+<h3>Installing</h3>
+
+<pre><code>$ brew install tig --HEAD
+$ apt-get install tig
+</code></pre>
+
+<h3>Invocation</h3>
+
+<pre><code>tig blame FILE
+tig master        # Show a branch
+tig test..master  # Show difference between two bracnhes
+tig FILE          # Show history of file
+tig v0.0.3:README # Show contents of file in a specific revision
+</code></pre>
+
+<h3>All views</h3>
+
+<pre><code>^N    # Next on parent view
+^P    # Previous on parent view
+</code></pre>
+
+<h3><code>m</code> - Main view</h3>
+
+<pre><code>D     # Toggle between date display modes
+A     # Toggle between author display modes
+C     # Cherry pick a commit
+</code></pre>
+
+<h3><code>S</code> - Stage view</h3>
+
+<pre><code>u     # Stage/unstage file or chunk
+!     # Revert file or chunk
+C     # Commit
+M     # Merge
+1     # Stage line
+[]    # Increase/decrease the diff context
+</code></pre>
+
+<h3><code>H</code> - Branch view</h3>
+
+<pre><code>i     # Change sort header
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Rdoc
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Basic RDoc format</h3>
+
+<pre><code># Foo.
+# 
+# @example
+#
+#   y
+#   g
+#
+# @param [String] param_name The xx and xx.
+#
+# @see http://url.com
+#
+# @return [true] if so
+#
+# == Definition lists
+#
+# list::  hi.
+# +foo+:: parameterized
+#
+# == Definition lists
+# [foo]   also
+# [bar]   like this
+</code></pre>
+
+<p>http://rdoc.rubyforge.org/RDoc/Markup.html</p>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

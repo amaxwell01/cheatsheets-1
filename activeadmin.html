@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      ActiveAdmin
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Listing scopes</h3>
+
+<p>Allows you to filter listings by a certain scope.</p>
+
+<pre><code>scope :draft
+scope :for_approval
+</code></pre>
+
+<h3>Sidebar filters</h3>
+
+<pre><code>filter :email
+filter :username
+</code></pre>
+
+<h3>Custom actions</h3>
+
+<p>You can define custom actions for models.</p>
+
+<pre><code>before_filter only: [:show, :edit, :publish] do
+  @post = Post.find(params[:id])
+end
+</code></pre>
+
+<p>Make the route:</p>
+
+<pre><code>member_action :publish, method: :put do
+  @post.publish!
+  redirect_to admin_posts_path, notice: "The post '#{@post}' has been published!"
+end
+</code></pre>
+
+<p>Link it in the index:</p>
+
+<pre><code>index do
+  column do |post|
+    link_to 'Publish', publish_admin_post_path(post), method: :put
+  end
+end
+</code></pre>
+
+<p>And link it in show/edit:</p>
+
+<pre><code>action_item only: [:edit, :show] do
+  @post = Post.find(params[:id])
+  link_to 'Publish', publish_admin_post_path(post), method: :put
+end
+</code></pre>
+
+<h3>Columns</h3>
+
+<pre><code>column :foo
+
+column :title, sortable: :name do |post|
+  strong post.title
+end
+</code></pre>
+
+<h3>Other helpers</h3>
+
+<pre><code># Grey, green, orange, red
+status_tag "Done"
+status_tag "Finished", :ok
+status_tag "You", :warn
+status_tag "Failed", :error
+</code></pre>
+
+<h3>Disabling 'new post'</h3>
+
+<pre><code>ActiveAdmin.register Post do
+  actions :index, :edit
+  # or: config.clear_action_items!
+end
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Rails helpers
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Date helpers</h3>
+
+<p>http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html</p>
+
+<h3>Date</h3>
+
+<pre><code>distance_of_time_in_words(Time.now, project.end_date) #=&gt; 3 hours
+distance_of_time_in_words_to_now project.end_date     #=&gt; 3 hours
+</code></pre>
+
+<h3>Time select</h3>
+
+<pre><code># Creates a time select tag that, when POSTed, will be stored in the article
+# variable in the sunrise attribute.
+time_select "article", "start_time"
+
+# All options are optional
+time_select "article", "start_time", \
+  :include_seconds =&gt; true,
+  :minute_step =&gt; 15,
+  :prompt =&gt; true,
+  :prompt =&gt; { :hour =&gt; "Choose hr", :minute =&gt; "Choose min", :second =&gt; "Choose sec" },
+  :ampm =&gt; true
+
+# For dates (all options are optional)
+date_select "article", "written_on", \
+  :start_year =&gt; 1995,
+  :use_month_numbers =&gt; true,
+  :discard_day =&gt; true,
+  :include_blank =&gt; true,
+  :order =&gt; [:day, :month, :year],
+  :default =&gt; 3.days.from_now,
+  :default =&gt; { :day =&gt; 20 },
+  :prompt =&gt; { :day =&gt; 'Select day', :month =&gt; 'Select month', :year =&gt; 'Select year' }
+</code></pre>
+
+<h3>Time tag</h3>
+
+<pre><code>time_tag Date.today  #=&gt; &lt;time datetime="2010-11-04"&gt;November 04, 2010&lt;%rtime&gt;
+time_tag Time.now    #=&gt; &lt;time datetime="2010-11-04T17:55:45+01:00"&gt;November 04, 2010 17:55&lt;/time&gt;
+
+time_tag Date.yesterday, 'Yesterday'   #=&gt; &lt;time datetime="2010-11-03"&gt;Yesterday&lt;%rtime&gt;
+time_tag Date.today, :pubdate =&gt; true  #=&gt; &lt;time datetime="2010-11-04" pubdate="pubdate"&gt;November 04, 2010&lt;/time&gt;
+</code></pre>
+
+<h3>Files</h3>
+
+<pre><code>= form_for @post, :multipart =&gt; true do |f|
+  = f.file_field :picture
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

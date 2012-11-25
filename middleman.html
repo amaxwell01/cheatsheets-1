@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Middleman
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>Compass config</h3>
+
+<pre><code>compass_config do |config|
+  config.output_style = :compact
+end
+</code></pre>
+
+<h3>Config</h3>
+
+<pre><code># Automatic image dimensions on image_tag helper
+activate :automatic_image_sizes
+</code></pre>
+
+<h3>Gems</h3>
+
+<pre><code># Susy grids in Compass
+# First: gem install compass-susy-plugin
+require 'susy'
+
+# CodeRay syntax highlighting in Haml
+# First: gem install haml-coderay
+require 'haml-coderay'
+
+# CoffeeScript filters in Haml
+# First: gem install coffee-filter
+require 'coffee-filter'
+</code></pre>
+
+<h3>Page command</h3>
+
+<pre><code># With no layout
+page "/path/to/file.html", :layout =&gt; false
+
+# With alternative layout
+page "/path/to/file.html", :layout =&gt; :otherlayout
+
+# A path which all have the same layout
+with_layout :admin do
+  page "/admin/*"
+end
+
+# Proxy (fake) files
+page "/this-page-has-no-template.html", :proxy =&gt; "/template-file.html" do
+  @which_fake_page = "Rendering a fake page with a variable"
+end
+</code></pre>
+
+<h3>Helpers</h3>
+
+<pre><code>helpers do
+  def some_helper
+    "Helping"
+  end
+end
+</code></pre>
+
+<h3>Directories</h3>
+
+<pre><code>set :css_dir, "alternative_css_directory"
+set :js_dir, "alternative_js_directory"
+set :images_dir, "alternative_image_directory"
+</code></pre>
+
+<h1>Build-specific configuration</h1>
+
+<pre><code>configure :build do
+  activate :minify_css
+  activate :minify_javascript
+
+  # Enable cache buster
+  activate :cache_buster
+
+  # Use relative URLs
+  activate :relative_assets
+
+  # Compress PNGs after build
+  # First: gem install middleman-smusher
+  # require "middleman-smusher"
+  activate :smusher
+
+  # Or use a different image path
+  set :http_path, "/Content/images/"
+end
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

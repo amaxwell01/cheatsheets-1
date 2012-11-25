@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Ruby
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <ul>
+<li><code>$!</code> - latest error message</li>
+<li><code>$@</code> - location of error</li>
+<li><code>$_</code> - string last read by gets</li>
+<li><code>$.</code> - line number last read by interpreter</li>
+<li><code>$&amp;</code> - string last matched by regexp</li>
+<li><code>$~</code> - the last regexp match, as an array of subexpressions</li>
+<li><code>$n</code> - the nth subexpression in the last match (same as $~[n])</li>
+<li><code>$=</code> - case-insensitivity flag</li>
+<li><code>$/</code> - input record separator</li>
+<li><code>$\</code> - output record separator</li>
+<li><code>$0</code> - the name of the ruby script file</li>
+<li><code>$*</code> (or <code>ARGV</code>) - the command line arguments</li>
+<li><code>$$</code> - interpreter's process ID</li>
+<li><code>$?</code> - exit status of last executed child process</li>
+<li><code>$-i</code> <code>$-l</code> <code>$-p</code> <code>$-v</code> - Command line switches</li>
+<li><code>$-v</code> (or <code>$VERBOSE</code>) - verbose mode</li>
+</ul>
+
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

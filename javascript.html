@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Javascript
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h2>Web workers</h2>
+
+<pre><code>// Client code
+
+var worker = new Worker('worker.js');
+worker.onmessage = function(message) {
+  alert(message.data);
+});
+worker.postMessage("");
+</code></pre>
+
+<h3>Worker code</h3>
+
+<pre><code>// worker.js
+
+self.onmessage = function(message) {
+  alert(message.data);
+}
+self.postMessage("");
+</code></pre>
+
+<h3>Message data</h3>
+
+<pre><code>// [MessageEvent]
+bubbles: false
+cancelBubble: false
+cancelable: false
+clipboardData: undefined
+currentTarget: Worker
+data: "Hello"
+defaultPrevented: false
+eventPhase: 0
+lastEventId: ""
+origin: ""
+ports: Array[0]
+returnValue: true
+source: null
+srcElement: Worker
+target: Worker
+timeStamp: 1344821022383
+type: "message"
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

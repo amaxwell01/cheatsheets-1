@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      HTML
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>H5BP HTML tag</h3>
+
+<pre><code>&lt;!--[if lt IE 7 ]&gt; &lt;html class="ie6"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7 ]&gt;    &lt;html class="ie7"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;    &lt;html class="ie8"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;    &lt;html class="ie9"&gt; &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt; &lt;html class=""&gt; &lt;!--&lt;![endif]--&gt;
+</code></pre>
+
+<h3>IE conditionals</h3>
+
+<pre><code>&lt;!--[if IE]&gt;      I'm IE      &lt;![endif]--&gt;
+&lt;!--[if !IE]&gt; --&gt; Not IE &lt;!-- &lt;![endif]--&gt;
+</code></pre>
+
+<h3>iPhone viewport</h3>
+
+<pre><code>&lt;meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/&gt;
+</code></pre>
+
+<h3>Google jQuery</h3>
+
+<pre><code>&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<h3>Chrome frame</h3>
+
+<pre><code>&lt;!--[if lt IE 8]&gt;
+&lt;div class="upgrade-banner"&gt;
+  You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser.  Please &lt;a 
+  href="http://browsehappy.com/"&gt;
+  upgrade your browser&lt;/a&gt; or &lt;a 
+  href="http://www.google.com/chromeframe/?redirect=true"&gt;activate Google 
+  Chrome Frame&lt;/a&gt; to improve your experience.
+&lt;/div&gt;
+&lt;![endif]--&gt;
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

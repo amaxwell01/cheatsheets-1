@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Devise
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <p><a href="https://github.com/plataformatec/devise">Devise</a> is a flexible authentication
+gem.</p>
+
+<h2>Installation</h2>
+
+<p>Rails 3: Add the following to your Gemfile</p>
+
+<pre><code>gem "devise"
+gem "hpricot"
+gem "ruby_parser"
+</code></pre>
+
+<p>Install devise in your project</p>
+
+<pre><code>$ rails generate devise:install
+</code></pre>
+
+<p>Generate devise for your model</p>
+
+<pre><code>$ rails generate devise MODEL
+$ rake db:migrate
+</code></pre>
+
+<p>(Optional) Generate devise views</p>
+
+<pre><code>$ rails generate devise:views
+</code></pre>
+
+<h2>Helpers</h2>
+
+<pre><code>user_signed_in?
+current_user
+user_session
+destroy_user_session_path (Logout)
+new_user_session_path (Login)
+edit_user_registration_path (Edit registration)
+new_user_registration_path (Register new user)
+</code></pre>
+
+<h2>Controller stuff</h2>
+
+<pre><code>before_filter :authenticate_user!
+</code></pre>
+
+<h2>Model</h2>
+
+<h3>Model options</h3>
+
+<pre><code>class User &lt; ActiveRecord::Base
+  devise :database_authenticatable,
+    :registerable,
+    :confirmable,
+    :recoverable,
+    :rememberable,
+    :trackable,
+    :validatable
+end
+</code></pre>
+
+<h3>Migration helpers</h3>
+
+<pre><code>create_table :users do |t|
+  t.database_authenticatable
+  t.confirmable
+  t.recoverable
+  t.rememberable
+  t.trackable
+  t.timestamps
+end
+</code></pre>
+
+<h2>Routing</h2>
+
+<h3>Authenticated and unauthenticated routes</h3>
+
+<pre><code>unauthenticated do
+   root :to =&gt; 'home#index'
+end
+
+authenticated do
+  root :to =&gt; 'dashboard#index'
+end
+</code></pre>
+
+<h3>As</h3>
+
+<pre><code>as :user do
+  get 'sign_in', :to =&gt; 'devise/sessions#new'
+end
+</code></pre>
+
+<h3>Devise_for magic</h3>
+
+<pre><code>devise_for :users
+
+    # Session routes for Authenticatable (default)
+         new_user_session GET  /users/sign_in                    {:controller=&gt;"devise/sessions", :action=&gt;"new"}
+             user_session POST /users/sign_in                    {:controller=&gt;"devise/sessions", :action=&gt;"create"}
+     destroy_user_session GET  /users/sign_out                   {:controller=&gt;"devise/sessions", :action=&gt;"destroy"}
+
+    # Password routes for Recoverable, if User model has :recoverable configured
+        new_user_password GET  /users/password/new(.:format)     {:controller=&gt;"devise/passwords", :action=&gt;"new"}
+       edit_user_password GET  /users/password/edit(.:format)    {:controller=&gt;"devise/passwords", :action=&gt;"edit"}
+            user_password PUT  /users/password(.:format)         {:controller=&gt;"devise/passwords", :action=&gt;"update"}
+                          POST /users/password(.:format)         {:controller=&gt;"devise/passwords", :action=&gt;"create"}
+
+    # Confirmation routes for Confirmable, if User model has :confirmable configured
+    new_user_confirmation GET  /users/confirmation/new(.:format) {:controller=&gt;"devise/confirmations", :action=&gt;"new"}
+        user_confirmation GET  /users/confirmation(.:format)     {:controller=&gt;"devise/confirmations", :action=&gt;"show"}
+                          POST /users/confirmation(.:format)     {:controller=&gt;"devise/confirmations", :action=&gt;"create"}
+</code></pre>
+
+<h3>Customizing devise_for</h3>
+
+<pre><code>devise_for :users,
+  :path =&gt; "usuarios",
+  :path_names =&gt; {
+    :sign_in =&gt; 'login',
+    :sign_out =&gt; 'logout',
+    :password =&gt; 'secret',
+    :confirmation =&gt; 'verification',
+    :unlock =&gt; 'unblock',
+    :registration =&gt; 'register',
+    :sign_up =&gt; 'cmon_let_me_in' }
+</code></pre>
+
+<h2>Test helpers</h2>
+
+<pre><code>sign_in @user
+sign_out @user
+</code></pre>
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>

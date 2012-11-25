@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Muli:400,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='background'></div>
+  <div class='all'>
+    <h1>
+      Pry
+      <a class='back' href='.'>Index</a>
+    </h1>
+    <h3>cd / ls</h3>
+
+<pre><code>&gt; cd Array
+
+&gt; ls
+Array.methods: [] try_convert
+Array#methods: &amp; * + abbrev assoc at ...
+
+&gt; ls         # All
+
+&gt; ls -m      # Methods
+&gt; ls -M      # Instance methods
+
+&gt; ls -g      # Globals
+&gt; ls -l      # Local vars
+&gt; ls -c      # Constants
+
+&gt; ls -i      # Instance vars
+
+&gt; ls -G xx   # Grey by regex
+</code></pre>
+
+<h3>Shell integration</h3>
+
+<p>shell-mode adds dir to the prompt</p>
+
+<pre><code>pry(main)&gt; shell-mode
+pry(main):/home/x $
+</code></pre>
+
+<p>Commands with <code>.</code> are shell commands</p>
+
+<p>   pry(main)> .cat hello.txt</p>
+
+<h3>Inspection</h3>
+
+<blockquote><p>show-method Array#select</p>
+
+<p>ri Array#each
+cd Gem
+show-doc try_activate</p></blockquote>
+
+<p>Finding</p>
+
+<blockquote><p>find-method each
+   Array#each
+   Array#each_index
+   Enumerable#each_slice
+   ...</p></blockquote>
+
+<h3>Editing</h3>
+
+<blockquote><p>edit-method Pry#repl</p></blockquote>
+
+<h3>Gems</h3>
+
+<blockquote><p>gem-cd foo      # Switch to gem's dir
+gem-install foo
+gem-list</p></blockquote>
+
+<h3>Misc commands</h3>
+
+<blockquote><p>hist          # History
+wtf?          # Trace of recent exception</p></blockquote>
+
+<h3>Rails console</h3>
+
+<p>   $ pry -r ./config/environment</p>
+
+<h3>Bonus: hirb</h3>
+
+<blockquote><p>table User.all
+view User.all
+view User.all, fields: %w[id name email]</p></blockquote>
+
+<h3>Reference</h3>
+
+<ul>
+<li><a href="https://github.com/pry/pry">Pry</a></li>
+<li><a href="https://github.com/cldwalker/hirb">Hirb</a></li>
+</ul>
+
+
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+  <script src="http://cachedcommons.org/cache/prettify/1.0.0/javascripts/prettify-min.js"></script>
+  <script>$("pre").addClass("prettyprint");</script>
+  <script>prettyPrint();</script>
+</body>
+</html>
